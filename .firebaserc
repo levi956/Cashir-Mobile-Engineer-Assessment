@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "nuntium-b2008"
+  },
+  "targets": {},
+  "etags": {
+    "nuntium-b2008": {
+      "extensionInstances": {}
+    }
+  }
+}

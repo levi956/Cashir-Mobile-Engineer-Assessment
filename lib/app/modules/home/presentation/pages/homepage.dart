@@ -1,6 +1,9 @@
 import 'package:cashir_assessment/app/modules/authentication/presentation/controllers/get_user_controller.dart';
+import 'package:cashir_assessment/app/modules/onboard/presentation/pages/onboarding_page.dart';
 import 'package:cashir_assessment/app/modules/transactions/presentation/components/transaction_tile_component.dart';
+import 'package:cashir_assessment/app/modules/transactions/presentation/pages/transaction_detail_page.dart';
 import 'package:cashir_assessment/app/shared/shared.dart';
+import 'package:cashir_assessment/core/framework/navigation/navigation.dart';
 import 'package:cashir_assessment/core/framework/theme/presentation/app_theme_mixin.dart';
 import 'package:cashir_assessment/injectable.dart';
 import 'package:flutter/material.dart';
@@ -124,7 +127,8 @@ class _HomePageState extends State<HomePage> with AppThemeMixin {
                     const SizedBox(width: Spacings.spacing10),
                     AccountActionButton(
                       textColor: colors.alwaysWhite,
-                      onTap: () {},
+                      onTap: () =>
+                          pushToAndClearStack(context, const OnboardingPage()),
                       color: colors.alwaysBE1414,
                       text: 'Logout',
                       image: Svgs.transfer,
@@ -143,12 +147,18 @@ class _HomePageState extends State<HomePage> with AppThemeMixin {
               getUserController.buildWhen(
                 success: (user) {
                   final transactions = user.transactions;
-                  if (transactions.isEmpty) {}
+                  if (transactions.isEmpty) {
+                    return const BaseText('No transactions made');
+                  }
                   return Expanded(
                     child: ListView.separated(
                       itemBuilder: (_, index) {
                         final transacton = transactions[index];
-                        return TransactionTileComponent(transacton);
+                        return GestureDetector(
+                          onTap: () => pushTo(
+                              context, TransactionDetailPage(transacton)),
+                          child: TransactionTileComponent(transacton),
+                        );
                       },
                       separatorBuilder: (_, __) => const SizedBox(
                         height: Spacings.spacing10,

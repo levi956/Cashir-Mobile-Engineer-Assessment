@@ -47,7 +47,7 @@ class TransactionTileComponent extends StatelessWidget {
                 ),
               ),
               BaseText(
-                'NGN ${transaction.amount}',
+                '₦${transaction.amount}',
                 color: color.always181D27,
                 fontWeight: FontWeight.bold,
               ),

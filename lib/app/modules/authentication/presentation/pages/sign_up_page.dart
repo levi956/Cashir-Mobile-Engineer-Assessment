@@ -99,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> with AppThemeMixin {
                             prefixText: '@',
                           ),
                           const SizedBox(height: Spacings.spacing24),
-                          TextFieldComponent(
+                          const TextFieldComponent(
                             hint: 'Email',
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,

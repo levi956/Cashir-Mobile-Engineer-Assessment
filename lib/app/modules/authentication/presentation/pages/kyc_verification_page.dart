@@ -94,6 +94,7 @@ class _KycVerificationPageState extends State<KycVerificationPage>
                   nin: '',
                 ),
               ),
+              const SizedBox(height: Spacings.spacing16),
             ],
           ),
         ),
