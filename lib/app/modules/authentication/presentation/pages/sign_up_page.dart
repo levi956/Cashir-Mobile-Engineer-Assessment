@@ -1,6 +1,8 @@
+import 'package:cashir_assessment/app/modules/authentication/presentation/controllers/sign_up_controller.dart';
 import 'package:cashir_assessment/app/modules/authentication/presentation/pages/kyc_verification_page.dart';
 import 'package:cashir_assessment/app/shared/shared.dart';
 import 'package:cashir_assessment/core/core.dart';
+import 'package:cashir_assessment/injectable.dart';
 
 import 'package:flutter/material.dart';
 
@@ -15,9 +17,27 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> with AppThemeMixin {
   bool obscureText = false;
+  late SignUpController signUpController;
+
+  @override
+  void initState() {
+    signUpController = getIt<SignUpController>();
+
+    signUpController.listenWhen(
+      success: (data) {
+        pop(context);
+        pushTo(context, const KycVerificationPage());
+      },
+      failure: (e) {},
+      loading: () => showLoader(context),
+    );
+
+    super.initState();
+  }
 
   @override
   void dispose() {
+    signUpController.reset();
     super.dispose();
   }
 
@@ -79,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> with AppThemeMixin {
                             prefixText: '@',
                           ),
                           const SizedBox(height: Spacings.spacing24),
-                          const TextFieldComponent(
+                          TextFieldComponent(
                             hint: 'Email',
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,
@@ -145,7 +165,11 @@ class _SignUpPageState extends State<SignUpPage> with AppThemeMixin {
               CustomButton(
                 expanded: true,
                 text: 'Proceed',
-                onPressed: () => pushTo(context, const KycVerificationPage()),
+                onPressed: () => signUpController.signUp(
+                  email: '',
+                  password: '',
+                  name: '',
+                ),
               ),
               const SizedBox(height: Spacings.spacing16),
             ],

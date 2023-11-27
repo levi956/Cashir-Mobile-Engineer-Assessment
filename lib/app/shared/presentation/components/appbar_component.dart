@@ -65,7 +65,7 @@ class CustomBackButton extends StatelessWidget {
     return AppThemeBuilder(
       builder: (color) {
         return GestureDetector(
-          // onTap: () => pop(context),
+          onTap: () => pop(context),
           child: Padding(
             padding: const EdgeInsets.all(Spacings.spacing8),
             child: Icon(

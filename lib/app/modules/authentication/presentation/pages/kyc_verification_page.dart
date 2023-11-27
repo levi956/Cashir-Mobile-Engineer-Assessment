@@ -1,5 +1,9 @@
+import 'package:cashir_assessment/app/modules/authentication/presentation/controllers/submit_kyc_controller.dart';
+import 'package:cashir_assessment/app/modules/home/presentation/pages/homepage.dart';
 import 'package:cashir_assessment/app/shared/shared.dart';
+import 'package:cashir_assessment/core/framework/navigation/navigation.dart';
 import 'package:cashir_assessment/core/framework/theme/presentation/app_theme_mixin.dart';
+import 'package:cashir_assessment/injectable.dart';
 import 'package:flutter/material.dart';
 
 class KycVerificationPage extends StatefulWidget {
@@ -11,13 +15,35 @@ class KycVerificationPage extends StatefulWidget {
 
 class _KycVerificationPageState extends State<KycVerificationPage>
     with AppThemeMixin {
+  late SubmitKycController submitKycController;
+
+  @override
+  void initState() {
+    submitKycController = getIt<SubmitKycController>();
+
+    submitKycController.listenWhen(
+      success: (data) {
+        pop(context);
+        pushTo(context, const HomePage());
+      },
+      failure: (e) {},
+      loading: () => showLoader(context),
+    );
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    submitKycController.reset();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colors.alwaysWhite,
-      appBar: const AppBarComponent(
-        hasLeading: false,
-      ),
+      appBar: const AppBarComponent(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -62,7 +88,11 @@ class _KycVerificationPageState extends State<KycVerificationPage>
               CustomButton(
                 expanded: true,
                 text: 'Proceed',
-                onPressed: () {},
+                onPressed: () => submitKycController.submitKyc(
+                  address: '',
+                  meterBill: '',
+                  nin: '',
+                ),
               ),
             ],
           ),

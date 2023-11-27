@@ -6,4 +6,6 @@ class Svgs {
   static const String debitArrow = 'assets/svg/debitArrow.svg';
 }
 
-class Pngs {}
+class Pngs {
+  static const String onboardImage = 'assets/images/credit_cards.png';
+}

@@ -19,8 +19,12 @@ import 'app/modules/authentication/domain/service/authentication_service.dart'
     as _i5;
 import 'app/modules/authentication/domain/service/interface/authentication_service_inteface.dart'
     as _i4;
-import 'app/modules/authentication/presentation/controller/get_user_controller.dart'
+import 'app/modules/authentication/presentation/controllers/get_user_controller.dart'
     as _i8;
+import 'app/modules/authentication/presentation/controllers/sign_up_controller.dart'
+    as _i9;
+import 'app/modules/authentication/presentation/controllers/submit_kyc_controller.dart'
+    as _i10;
 import 'core/framework/theme/color/app_theme_controller.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -40,6 +44,10 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i6.AuthenticationRepositoryInterface>(() =>
         _i7.AuthenticationRepository(gh<_i4.AuthenticationServiceInterface>()));
     gh.lazySingleton<_i8.GetUserController>(() => _i8.GetUserController(
+        repository: gh<_i6.AuthenticationRepositoryInterface>()));
+    gh.lazySingleton<_i9.SignUpController>(() => _i9.SignUpController(
+        repository: gh<_i6.AuthenticationRepositoryInterface>()));
+    gh.lazySingleton<_i10.SubmitKycController>(() => _i10.SubmitKycController(
         repository: gh<_i6.AuthenticationRepositoryInterface>()));
     return this;
   }

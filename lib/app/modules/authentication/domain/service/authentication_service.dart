@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cashir_assessment/app/modules/authentication/data/models/sign_up_model.dart';
+import 'package:cashir_assessment/app/modules/authentication/data/models/submit_kyc_model.dart';
 import 'package:cashir_assessment/app/modules/authentication/data/models/user_model.dart';
 import 'package:cashir_assessment/app/modules/authentication/domain/service/interface/authentication_service_inteface.dart';
 import 'package:cashir_assessment/app/shared/shared.dart';
@@ -8,12 +10,12 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: AuthenticationServiceInterface)
 class AuthenticationService implements AuthenticationServiceInterface {
   @override
-  Future<void> simulateKycResigeration() async {
+  Future<void> simulateKycResigeration(SubmitKycModel model) async {
     await Future.delayed(const Duration(seconds: 2));
   }
 
   @override
-  Future<void> simulateSignUp() async {
+  Future<void> simulateSignUp(SignUpModel model) async {
     await Future.delayed(const Duration(seconds: 2));
   }
 

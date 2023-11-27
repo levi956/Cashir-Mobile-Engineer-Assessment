@@ -1,4 +1,4 @@
-import 'package:cashir_assessment/app/modules/authentication/presentation/controller/get_user_controller.dart';
+import 'package:cashir_assessment/app/modules/authentication/presentation/controllers/get_user_controller.dart';
 import 'package:cashir_assessment/app/modules/transactions/presentation/components/transaction_tile_component.dart';
 import 'package:cashir_assessment/app/shared/shared.dart';
 import 'package:cashir_assessment/core/framework/theme/presentation/app_theme_mixin.dart';

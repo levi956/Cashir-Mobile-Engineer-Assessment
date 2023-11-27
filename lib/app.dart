@@ -1,6 +1,5 @@
+import 'package:cashir_assessment/app/modules/onboard/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
-
-import 'app/modules/authentication/presentation/pages/sign_up_page.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -28,6 +27,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return const SignUpPage();
+    return const OnboardingPage();
   }
 }
