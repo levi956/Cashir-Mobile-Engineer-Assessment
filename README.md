@@ -18,7 +18,7 @@ The application features the principle "Component Driven Design" which enables a
 
 ## Technical details
 - Cahir is built with Flutter, using the Dart programming language.
-- The major state management used is Streams.
+- The major state management used is Streams & RxDart.
 - The app intends to follows functional, object oriented and interface-based programming paradigms.
 
 
