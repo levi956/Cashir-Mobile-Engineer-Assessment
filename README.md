@@ -1,10 +1,10 @@
 # Cashir Mobile Engineer Assessment
 
+## View Application
+
+1. Find the deplyed application [here](https://nuntium-b2008.web.app) 
 
 ## Installation
-1. Find attached an apk file in the "apk" folder directory of the project.
-
-or 
 
 1. Make sure you have [Flutter](https://flutter.dev/docs/get-started/install) and its dependencies installed on your device.
 2. Clone the repository: `git clone https://github.com/yourusername/my-app.git`
@@ -27,6 +27,7 @@ The application features the principle "Component Driven Design" which enables a
 - [x] Sign Up
 - [x] Kyc Verification
 - [x] Home Dashboard
+- [x] Transaction Summary
 
 
 ## Screenshots
@@ -39,7 +40,7 @@ The application features the principle "Component Driven Design" which enables a
 |    :---:     |     :---:      |  
 | <img src="graphics/kyc_page.png" width="500">   | <img src="graphics/homepage.png" width="500">   |
 
-| Transaction Analytics | 
+| Transaction Summary | 
 |    :---:     |   
 | <img src="graphics/details.png" width="500">   | 
 
